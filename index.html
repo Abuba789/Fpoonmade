@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#05070a">
+  <title>SANITY.exe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game" aria-label="SANITY.exe, jogo de tiro em primeira pessoa"></canvas>
+  <div class="screen-noise" aria-hidden="true"></div>
+  <div id="overlay" class="overlay"></div>
+  <div id="boot" class="boot" hidden></div>
+  <script>
+    if (location.protocol === 'file:') {
+      const boot = document.getElementById('boot'); boot.hidden = false;
+      boot.innerHTML = '<article><small>SANITY.exe · BOOT ERROR</small><h1>Execute pelo servidor local</h1><p>O navegador bloqueia os módulos do jogo quando você abre index.html diretamente.</p><p>No VS Code, use <b>Live Server</b> → “Open with Live Server”. Ou rode <code>python -m http.server 8000</code> nesta pasta e abra <code>http://localhost:8000</code>.</p></article>';
+    }
+    window.addEventListener('error', e => { const b=document.getElementById('boot'); b.hidden=false; b.innerHTML='<article><small>SANITY.exe · BOOT ERROR</small><h1>Falha ao iniciar</h1><p>'+String(e.message||'Confira o console do navegador.')+'</p></article>'; });
+    window.addEventListener('unhandledrejection', e => { const b=document.getElementById('boot'); b.hidden=false; b.innerHTML='<article><small>SANITY.exe · BOOT ERROR</small><h1>Falha ao carregar módulos</h1><p>'+String(e.reason?.message||e.reason||'Confira o console do navegador.')+'</p></article>'; });
+  </script>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
