@@ -1,25 +1,54 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <meta name="theme-color" content="#05070a">
+  <meta name="theme-color" content="#090809">
   <title>SANITY.exe</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <canvas id="game" aria-label="SANITY.exe, jogo de tiro em primeira pessoa"></canvas>
-  <div class="screen-noise" aria-hidden="true"></div>
-  <div id="overlay" class="overlay"></div>
-  <div id="boot" class="boot" hidden></div>
-  <script>
-    if (location.protocol === 'file:') {
-      const boot = document.getElementById('boot'); boot.hidden = false;
-      boot.innerHTML = '<article><small>SANITY.exe · BOOT ERROR</small><h1>Execute pelo servidor local</h1><p>O navegador bloqueia os módulos do jogo quando você abre index.html diretamente.</p><p>No VS Code, use <b>Live Server</b> → “Open with Live Server”. Ou rode <code>python -m http.server 8000</code> nesta pasta e abra <code>http://localhost:8000</code>.</p></article>';
-    }
-    window.addEventListener('error', e => { const b=document.getElementById('boot'); b.hidden=false; b.innerHTML='<article><small>SANITY.exe · BOOT ERROR</small><h1>Falha ao iniciar</h1><p>'+String(e.message||'Confira o console do navegador.')+'</p></article>'; });
-    window.addEventListener('unhandledrejection', e => { const b=document.getElementById('boot'); b.hidden=false; b.innerHTML='<article><small>SANITY.exe · BOOT ERROR</small><h1>Falha ao carregar módulos</h1><p>'+String(e.reason?.message||e.reason||'Confira o console do navegador.')+'</p></article>'; });
-  </script>
-  <script type="module" src="src/main.js"></script>
+  <main id="shell">
+    <canvas id="game" aria-label="Jogo SANITY.exe"></canvas>
+    <section id="intro" class="screen">
+      <div class="brand">SANITY<span>.exe</span></div>
+      <p class="eyebrow">PROTOCOLO DE CONTENÇÃO // 03:17</p>
+      <h1>Você é o único<br><em>que ainda pensa.</em></h1>
+      <p class="copy">A corporação chamou de atualização. Você chama de infecção.<br>Entre. Limpe o andar. Descubra o
+        que fizeram com a sua mente.</p>
+      <button id="start">INICIAR TURNO <b>↵</b></button>
+      <div class="keys">WASD MOVER <i>·</i> MOUSE MIRAR / ATIRAR <i>·</i> ESPAÇO ESQUIVA<br>R RECARREGAR <i>·</i> E
+        INTERAGIR</div>
+      <div class="stamp">BUILD 0.9.7 // USO INTERNO</div>
+    </section>
+    <section id="hud" class="hidden">
+      <div class="hud-top">
+        <div class="floor-tag"><span id="sector-name">SETOR 01</span><b id="level">01</b></div>
+        <div class="objective" id="objective">ELIMINE AS AMEAÇAS</div>
+        <div class="health-wrap"><span>SANIDADE</span>
+          <div class="health"><i id="healthbar"></i></div><b id="healthtext">100</b>
+        </div>
+      </div>
+      <div class="hud-bottom">
+        <div class="weapon-name">K-12 // DUPLO CANO</div>
+        <div class="ammo" id="ammo">Ⅱ <span>Ⅱ</span></div>
+        <div class="dash" id="dash">DASH <i></i></div>
+        <div class="hint" id="hint">WASD MOVIMENTO&nbsp;&nbsp; / &nbsp;&nbsp; MOUSE DISPARA</div>
+      </div>
+      <div class="crosshair" id="crosshair"></div>
+    </section>
+    <section id="overlay" class="screen hidden">
+      <p class="eyebrow" id="over-eyebrow">RELATÓRIO DE TURNO</p>
+      <h2 id="over-title">ANDAR LIMPO</h2>
+      <p id="over-copy"></p>
+      <div id="upgrade-list"></div><button id="continue">DESCER AO PRÓXIMO ANDAR <b>↵</b></button>
+    </section>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+  </main>
+  <script src="game.js"></script>
 </body>
+
 </html>
