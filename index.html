@@ -24,6 +24,7 @@
         INTERAGIR</div>
       <div class="stamp">BUILD 0.9.7 // USO INTERNO</div>
     </section>
+    <canvas id="ai-eyes" aria-hidden="true"></canvas>
     <section id="hud" class="hidden">
       <div class="hud-top">
         <div class="floor-tag"><span id="sector-name">SETOR 01</span><b id="level">01</b></div>
@@ -35,20 +36,30 @@
       <div class="hud-bottom">
         <div class="weapon-name">CANO EXPANDIDO</div>
         <div class="ammo" id="ammo">▮ ▮ ▮ ▮ ▮ ▮</div>
-        <div class="dash" id="dash">DASH <i></i></div>
+        <div class="dash" id="dash">DASH <b id="dash-count">1/1</b><i></i></div>
         <div class="hint" id="hint">WASD MOVIMENTO&nbsp;&nbsp; / &nbsp;&nbsp; MOUSE DISPARA</div>
       </div>
+      <div class="ultimate-hud" id="ultimate-hud"><span>SANDEVISTAN.exe</span><b id="ultimate-percent">0%</b><div class="ultimate-meter"><i id="ultimate-fill"></i></div><small>Q // ULTIMATE</small></div>
       <div class="crosshair" id="crosshair"></div>
     </section>
     <section id="overlay" class="screen hidden">
       <p class="eyebrow" id="over-eyebrow">RELATÓRIO DE TURNO</p>
       <h2 id="over-title">ANDAR LIMPO</h2>
       <p id="over-copy"></p>
-      <div id="upgrade-list"></div><button id="continue">DESCER AO PRÓXIMO ANDAR <b>↵</b></button>
+      <div id="upgrade-list"></div>
+      <section id="quiz" class="quiz hidden" aria-live="polite">
+        <div class="quiz-meta"><span id="quiz-category"></span><span id="quiz-difficulty"></span><span id="quiz-streak"></span></div>
+        <h3 id="quiz-question"></h3><div id="quiz-answers" class="quiz-answers"></div>
+        <p id="quiz-feedback" class="quiz-feedback"></p>
+      </section>
+      <button id="continue">DESCER AO PRÓXIMO ANDAR <b>↵</b></button>
     </section>
     <div class="scanlines"></div>
     <div class="vignette"></div>
   </main>
+  <script src="questions.js"></script>
+  <script src="buffs.js"></script>
+  <script src="ai-eyes.js"></script>
   <script src="game.js"></script>
 </body>
 
