@@ -32,6 +32,10 @@
         <div class="health-wrap"><span>SANIDADE</span>
           <div class="health"><i id="healthbar"></i></div><b id="healthtext">100</b>
         </div>
+        <div id="malware-counter" class="malware-counter">
+          <span>MALWARE DETECTED:</span> <b id="malware-count">00 / 00</b>
+          <div id="malware-status" role="status"></div>
+        </div>
       </div>
       <div class="hud-bottom">
         <div class="weapon-name">CANO EXPANDIDO</div>
@@ -43,6 +47,7 @@
       <div class="crosshair" id="crosshair"></div>
     </section>
     <section id="overlay" class="screen hidden">
+      <canvas id="quiz-ai-eyes" aria-hidden="true"></canvas>
       <p class="eyebrow" id="over-eyebrow">RELATÓRIO DE TURNO</p>
       <h2 id="over-title">ANDAR LIMPO</h2>
       <p id="over-copy"></p>
@@ -51,6 +56,7 @@
         <div class="quiz-meta"><span id="quiz-category"></span><span id="quiz-difficulty"></span><span id="quiz-streak"></span></div>
         <h3 id="quiz-question"></h3><div id="quiz-answers" class="quiz-answers"></div>
         <p id="quiz-feedback" class="quiz-feedback"></p>
+        <p id="quiz-ai-dialogue" class="quiz-ai-dialogue"></p>
       </section>
       <button id="continue">DESCER AO PRÓXIMO ANDAR <b>↵</b></button>
     </section>
@@ -60,6 +66,8 @@
   <script src="questions.js"></script>
   <script src="buffs.js"></script>
   <script src="ai-eyes.js"></script>
+  <script src="ai-dialogues.js"></script>
+  <script src="malware-counter.js"></script>
   <script src="game.js"></script>
 </body>
 
