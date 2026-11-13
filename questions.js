@@ -1,125 +1,71 @@
 (() => {
-  const categories = [
-    ['História da computação', [
-      ['Qual máquina de Charles Babbage foi projetada para cálculos programáveis?', ['Máquina Analítica','ENIAC','Colossus','UNIVAC'],0,'A Máquina Analítica previa memória, unidade de cálculo e instruções.'],
-      ['Quem é reconhecida por escrever instruções para a Máquina Analítica?', ['Ada Lovelace','Grace Hopper','Katherine Johnson','Margaret Hamilton'],0,'Ada Lovelace descreveu um algoritmo para a máquina de Babbage.'],
-      ['Qual computador eletrônico foi usado para cálculos balísticos nos EUA na década de 1940?', ['ENIAC','Macintosh','PDP-11','Altair 8800'],0,'O ENIAC foi concluído em 1945 e ocupava uma sala inteira.'],
-      ['Qual máquina britânica ajudou a decifrar códigos durante a Segunda Guerra?', ['Colossus','Deep Blue','EDSAC','Ferranti Mark 1'],0,'O Colossus foi desenvolvido para analisar mensagens cifradas Lorenz.'],
-      ['Quem criou o conceito de máquina universal que fundamenta a computação teórica?', ['Alan Turing','John von Neumann','Claude Shannon','Tim Berners-Lee'],0,'A máquina de Turing formaliza o conceito de computação geral.'],
-      ['Qual computador pessoal lançado em 1981 popularizou o padrão IBM PC?', ['IBM 5150','Apple Lisa','Commodore 64','Altair 8800'],0,'O IBM 5150 estabeleceu uma arquitetura amplamente clonada.'],
-      ['Qual empresa lançou o computador Macintosh original em 1984?', ['Apple','IBM','Commodore','Atari'],0,'O Macintosh trouxe interface gráfica e mouse ao mercado de massa.'],
-      ['Qual projeto precursor da internet conectou universidades dos EUA?', ['ARPANET','BITNET','NSFNET','Ethernet'],0,'A ARPANET começou a operar em 1969.']]],
-    ['Hardware e software', [
-      ['Qual componente executa instruções de programas?', ['CPU','SSD','Fonte','Placa de rede'],0,'A CPU busca, decodifica e executa instruções.'],
-      ['Qual memória perde seu conteúdo quando o computador é desligado?', ['RAM','ROM','SSD','Disco rígido'],0,'A RAM é memória volátil usada durante a execução.'],
-      ['Qual dispositivo costuma oferecer menor latência para armazenamento?', ['SSD NVMe','DVD','HD mecânico','Fita magnética'],0,'SSDs NVMe acessam dados via PCIe e não têm partes móveis.'],
-      ['Para que serve a pasta térmica entre CPU e dissipador?', ['Melhorar transferência de calor','Armazenar energia','Reduzir tensão','Limpar contatos'],0,'Ela preenche pequenas irregularidades e melhora o contato térmico.'],
-      ['Qual componente converte energia da tomada para os componentes do PC?', ['Fonte de alimentação','Placa-mãe','GPU','Memória RAM'],0,'A fonte fornece tensões contínuas adequadas ao computador.'],
-      ['O que caracteriza firmware?', ['Software de baixo nível armazenado no dispositivo','Um tipo de cabo','Memória volátil','Um periférico de saída'],0,'Firmware controla funções básicas de um dispositivo.'],
-      ['Qual unidade representa aproximadamente um bilhão de bytes no SI?', ['Gigabyte','Kilobyte','Megabyte','Terabyte'],0,'No SI, giga corresponde a 10⁹.'],
-      ['Qual componente acelera principalmente gráficos e cálculos paralelos?', ['GPU','Controlador SATA','BIOS','Cache L1'],0,'GPUs possuem muitos núcleos adequados a operações paralelas.']]],
-    ['Lógica de programação', [
-      ['Qual operador lógico é verdadeiro quando ambos os operandos são verdadeiros?', ['AND','OR','NOT','XOR'],0,'AND exige que as duas condições sejam verdadeiras.'],
-      ['Qual é o resultado de NOT verdadeiro?', ['Falso','Verdadeiro','Nulo','Indefinido'],0,'NOT inverte o valor lógico.'],
-      ['Em lógica booleana, quanto vale verdadeiro AND falso?', ['Falso','Verdadeiro','Nulo','Depende da linguagem'],0,'AND só resulta verdadeiro se ambos os valores forem verdadeiros.'],
-      ['Qual estrutura escolhe entre caminhos conforme uma condição?', ['Condicional','Laço infinito','Comentário','Declaração de tipo'],0,'Uma condicional como if executa caminhos diferentes conforme um teste.'],
-      ['O que é uma variável?', ['Nome associado a um valor que pode ser usado no programa','Uma instrução de repetição','Um erro de compilação','Uma linguagem de marcação'],0,'Variáveis permitem guardar e referenciar valores.'],
-      ['Qual operador costuma representar igualdade em expressões de comparação?', ['==','=',':=','=>'],0,'Em linguagens como C, Java e JavaScript, == compara igualdade.'],
-      ['Qual expressão é equivalente a “x é maior que 3 e x é menor que 8”?', ['x > 3 AND x < 8','x > 3 OR x < 8','x < 3 AND x > 8','NOT x > 8'],0,'As duas desigualdades precisam ser verdadeiras ao mesmo tempo.'],
-      ['O que é um valor booleano?', ['Um valor verdadeiro ou falso','Um número decimal','Uma cadeia de bytes','Um nome de função'],0,'Booleanos representam os dois valores lógicos.']]],
-    ['Algoritmos', [
-      ['Qual é a complexidade média da busca binária em uma lista ordenada?', ['O(log n)','O(n)','O(n²)','O(1)'],0,'Cada comparação elimina aproximadamente metade dos elementos.'],
-      ['Qual requisito a busca binária impõe aos dados?', ['Estarem ordenados','Serem todos distintos','Serem números inteiros','Estarem em uma pilha'],0,'A divisão do intervalo depende de conhecer a ordem dos elementos.'],
-      ['Qual estrutura segue a regra último a entrar, primeiro a sair?', ['Pilha','Fila','Árvore B','Grafo'],0,'Uma pilha é LIFO: last in, first out.'],
-      ['Qual estrutura normalmente atende itens na ordem de chegada?', ['Fila','Pilha','Heap máximo','Tabela hash'],0,'Uma fila é FIFO: first in, first out.'],
-      ['Qual é o pior caso da busca linear em n itens?', ['O(n)','O(log n)','O(1)','O(n log n)'],0,'No pior caso é necessário examinar todos os itens.'],
-      ['Qual algoritmo de ordenação tem pior caso O(n log n) garantido e usa divisão e conquista?', ['Merge sort','Bubble sort','Insertion sort','Selection sort'],0,'Merge sort divide os dados e intercala as partes ordenadas.'],
-      ['Em um grafo não ponderado, qual busca encontra caminhos com menos arestas?', ['Busca em largura (BFS)','Busca em profundidade (DFS)','Quicksort','Busca binária'],0,'BFS visita os vértices por camadas de distância.'],
-      ['O que descreve a complexidade assintótica de um algoritmo?', ['Como seu custo cresce com o tamanho da entrada','O tempo exato em qualquer computador','A quantidade de linhas do código','O uso de memória da CPU'],0,'Notações como O(n) descrevem crescimento em escala.']]],
-    ['Linguagem C', [
-      ['Qual função costuma ser o ponto de entrada de um programa C?', ['main','start','init','run'],0,'A execução convencional de um programa C começa em main.'],
-      ['Qual cabeçalho declara printf?', ['stdio.h','stdlib.h','string.h','math.h'],0,'printf é declarado em stdio.h.'],
-      ['Qual especificador de formato é usado comumente para imprimir um int com printf?', ['%d','%s','%f','%c'],0,'%d corresponde a um inteiro decimal.'],
-      ['Qual operador obtém o endereço de uma variável em C?', ['&','*','%','->'],0,'O operador unário & produz o endereço da variável.'],
-      ['O que representa NULL em um ponteiro C?', ['Um ponteiro que não aponta para objeto válido','Um inteiro sempre igual a 1','O fim de qualquer arquivo','Uma string vazia alocada'],0,'NULL representa um ponteiro nulo.'],
-      ['Qual palavra-chave declara uma variável cujo valor não deve ser alterado após inicialização?', ['const','static','extern','register'],0,'const qualifica um objeto como não modificável por essa referência.'],
-      ['Qual função libera memória alocada com malloc?', ['free','delete','release','remove'],0,'free devolve ao alocador a memória obtida dinamicamente.'],
-      ['Qual operador acessa um membro de estrutura por meio de um ponteiro?', ['->','.','&','::'],0,'p->campo equivale a (*p).campo.']]],
-    ['Java', [
-      ['Qual método é o ponto de entrada convencional de uma aplicação Java?', ['public static void main(String[] args)','start()','runMain()','init(String args)'],0,'A JVM procura o método main com essa assinatura convencional.'],
-      ['Qual palavra-chave cria uma instância de classe em Java?', ['new','make','alloc','instance'],0,'new cria um objeto e invoca seu construtor.'],
-      ['Qual tipo primitivo representa um valor lógico em Java?', ['boolean','bool','logical','bit'],0,'boolean aceita true ou false.'],
-      ['Qual estrutura Java é uma coleção que não permite elementos duplicados?', ['Set','List','ArrayList','Queue'],0,'A interface Set modela conjuntos sem duplicatas.'],
-      ['Qual palavra-chave impede que uma classe seja herdada?', ['final','static','private','sealed'],0,'Uma classe final não pode ser estendida.'],
-      ['Qual bloco é usado para tratar exceções em Java?', ['try/catch','if/else','for/while','switch/case'],0,'Exceções lançadas em try podem ser tratadas por catch.'],
-      ['Qual tipo é usado para texto imutável em Java?', ['String','StringBuilder','char[]','Text'],0,'String é imutável; operações produzem novas instâncias.'],
-      ['Qual modificador permite acesso dentro do pacote e por subclasses, com regras específicas de herança?', ['protected','private','public','transient'],0,'protected permite acesso no pacote e em subclasses.']]],
-    ['HTML e CSS', [
-      ['Qual elemento HTML representa o título principal de uma página?', ['<h1>','<head>','<title>','<header>'],0,'h1 marca um cabeçalho de primeiro nível no conteúdo.'],
-      ['Qual atributo associa texto alternativo a uma imagem HTML?', ['alt','src','href','title'],0,'alt oferece alternativa textual à imagem.'],
-      ['Qual elemento HTML cria um link?', ['<a>','<link>','<p>','<nav>'],0,'O elemento a cria hiperlinks, normalmente com href.'],
-      ['Qual propriedade CSS altera a cor do texto?', ['color','background-color','font-style','opacity'],0,'color define a cor do primeiro plano textual.'],
-      ['Qual seletor CSS seleciona um elemento pelo id painel?', ['#painel','.painel','painel','*painel'],0,'O caractere # seleciona por id em CSS.'],
-      ['Qual modelo CSS facilita layouts em uma dimensão com alinhamento flexível?', ['Flexbox','Float','Table layout','Position fixed'],0,'Flexbox organiza itens ao longo de um eixo principal.'],
-      ['Qual atributo HTML associa um label ao input pelo identificador?', ['for','name','value','role'],0,'O valor de for deve corresponder ao id do controle.'],
-      ['Qual declaração CSS inclui padding e borda dentro da largura definida?', ['box-sizing: border-box','display: inline','overflow: hidden','position: relative'],0,'Com border-box, largura inclui conteúdo, padding e borda.']]],
-    ['JavaScript', [
-      ['Qual declaração cria uma variável de escopo de bloco que pode ser reatribuída?', ['let','const','varies','static'],0,'let declara variável com escopo de bloco e valor reatribuível.'],
-      ['Qual método converte uma string JSON válida em valor JavaScript?', ['JSON.parse()','JSON.stringify()','JSON.convert()','parse.JSON()'],0,'JSON.parse analisa texto JSON e retorna o valor correspondente.'],
-      ['Qual operador verifica igualdade estrita sem conversão de tipo?', ['===','==','=','!=='],0,'=== compara valor e tipo sem coerção.'],
-      ['O que uma Promise representa?', ['O resultado futuro de uma operação assíncrona','Uma variável global','Uma classe de elemento HTML','Um laço de repetição'],0,'Promise representa conclusão ou falha futura de uma operação.'],
-      ['Qual método adiciona um elemento ao final de um array?', ['push()','pop()','shift()','slice()'],0,'push acrescenta um ou mais elementos ao fim do array.'],
-      ['Qual palavra-chave declara uma função assíncrona?', ['async','await','defer','yield'],0,'async marca uma função que retorna uma Promise.'],
-      ['O que document.querySelector() retorna quando encontra um elemento?', ['O primeiro elemento correspondente','Todos os elementos como array','O texto da página','Sempre uma Promise'],0,'querySelector retorna o primeiro elemento correspondente ou null.'],
-      ['Qual valor representa explicitamente a ausência intencional de objeto?', ['null','undefined','NaN','false'],0,'null é usado para indicar ausência intencional de valor de objeto.']]],
-    ['Programação orientada a objetos', [
-      ['Qual conceito agrupa dados e operações em uma unidade?', ['Encapsulamento','Recursão','Normalização','Compilação'],0,'Encapsulamento reúne estado e comportamento e controla seu acesso.'],
-      ['Qual conceito permite que uma classe derive comportamento de outra?', ['Herança','Sobrecarga de rede','Serialização','Agregação de logs'],0,'Herança permite especializar uma classe a partir de outra.'],
-      ['Qual conceito permite a mesma interface assumir comportamentos diferentes?', ['Polimorfismo','Abstração de dados','Instanciação','Composição de strings'],0,'Polimorfismo permite tratar implementações distintas por uma interface comum.'],
-      ['O que é uma instância?', ['Um objeto criado a partir de uma classe','Um método abstrato','Um tipo de comentário','Um pacote de instalação'],0,'Uma instância é um objeto concreto de uma classe.'],
-      ['Qual membro é chamado ao criar um objeto para inicializar seu estado?', ['Construtor','Finalizador de CSS','Iterador','Getter estático'],0,'Construtores inicializam uma nova instância.'],
-      ['O que caracteriza uma classe abstrata?', ['Pode definir uma base incompleta para subclasses','Não pode ter métodos','É sempre uma interface gráfica','Não pode ser estendida'],0,'Uma classe abstrata pode reunir implementação e operações abstratas.'],
-      ['Na composição, qual relação costuma existir entre objeto e componente?', ['O componente pertence ao ciclo de vida do objeto composto','Não existe relação entre eles','O componente herda sempre do composto','O composto é uma função global'],0,'Composição modela uma relação forte de todo e parte.'],
-      ['Qual princípio recomenda que uma classe tenha um único motivo para mudar?', ['Responsabilidade única','Substituição de Liskov','Inversão de dependência','Segregação de interface'],0,'O princípio da responsabilidade única limita a classe a um propósito coeso.']]],
-    ['Banco de dados', [
-      ['Qual comando SQL consulta dados de uma tabela?', ['SELECT','UPDATE','DROP','INSERT'],0,'SELECT recupera linhas e colunas.'],
-      ['Qual chave identifica unicamente cada linha de uma tabela?', ['Chave primária','Chave estrangeira','Índice parcial','View'],0,'A chave primária deve identificar unicamente cada registro.'],
-      ['Qual comando SQL adiciona linhas a uma tabela?', ['INSERT','SELECT','ALTER','GRANT'],0,'INSERT insere novas linhas.'],
-      ['Para que serve uma chave estrangeira?', ['Relacionar registros e garantir integridade referencial','Criptografar uma tabela','Ordenar toda consulta','Substituir a chave primária'],0,'Uma FK referencia uma chave de outra tabela e ajuda a manter consistência.'],
-      ['Qual cláusula filtra grupos após o uso de GROUP BY?', ['HAVING','WHERE','ORDER BY','LIMIT'],0,'HAVING filtra grupos agregados.'],
-      ['O que a primeira forma normal (1FN) busca garantir?', ['Valores atômicos e ausência de grupos repetidos','Todas as tabelas sem chaves','Apenas colunas numéricas','Uma tabela por usuário'],0,'1FN exige valores indivisíveis no contexto do modelo e linhas identificáveis.'],
-      ['Qual propriedade ACID garante que uma transação ocorra por completo ou não ocorra?', ['Atomicidade','Consistência','Isolamento','Durabilidade'],0,'Atomicidade evita que apenas parte da transação seja aplicada.'],
-      ['Qual tipo de JOIN retorna linhas com correspondência em ambas as tabelas?', ['INNER JOIN','LEFT JOIN','CROSS JOIN','FULL OUTER JOIN'],0,'INNER JOIN mantém somente correspondências dos dois lados.']]],
-    ['Redes de computadores', [
-      ['Qual protocolo traduz nomes de domínio em endereços IP?', ['DNS','DHCP','FTP','SMTP'],0,'DNS resolve nomes como exemplo.com em registros de rede.'],
-      ['Qual protocolo atribui configurações IP automaticamente a clientes?', ['DHCP','DNS','SSH','NTP'],0,'DHCP distribui endereço IP e outras configurações de rede.'],
-      ['Qual protocolo seguro é usado normalmente para acesso remoto a shell?', ['SSH','Telnet','HTTP','TFTP'],0,'SSH oferece sessão remota criptografada.'],
-      ['Qual é o propósito principal de um endereço IP?', ['Identificar uma interface em uma rede IP','Identificar fabricante do teclado','Criptografar o tráfego','Armazenar nomes DNS localmente'],0,'Endereços IP permitem identificar interfaces e encaminhar pacotes.'],
-      ['Qual protocolo de transporte oferece entrega confiável e ordenada?', ['TCP','UDP','ARP','ICMP'],0,'TCP fornece fluxo confiável e ordenado.'],
-      ['Qual porta padrão é associada a HTTPS?', ['443','80','21','25'],0,'HTTPS usa normalmente a porta TCP 443.'],
-      ['Em uma rede IPv4 /24, quantos bits formam o prefixo de rede?', ['24','8','16','32'],0,'/24 indica 24 bits de rede e 8 bits restantes para hosts.'],
-      ['Qual equipamento encaminha pacotes entre redes distintas?', ['Roteador','Hub','Repetidor passivo','Patch panel'],0,'Roteadores encaminham tráfego entre redes IP.']]],
-    ['Segurança da informação', [
-      ['O que é phishing?', ['Tentativa fraudulenta de obter dados fingindo ser uma entidade confiável','Um método de compactação','Uma cópia de segurança offline','Uma atualização legítima'],0,'Phishing usa engano para roubar credenciais ou outras informações.'],
-      ['Qual prática reduz o impacto de uma senha vazada?', ['Usar autenticação multifator','Reutilizar a senha em sites','Desativar atualizações','Compartilhar a senha com a equipe'],0,'MFA exige uma prova adicional além da senha.'],
-      ['Qual propriedade criptográfica busca detectar alterações não autorizadas nos dados?', ['Integridade','Disponibilidade','Anonimato','Compressão'],0,'Integridade permite detectar modificação indevida dos dados.'],
-      ['O que é uma função hash criptográfica?', ['Uma transformação unidirecional de tamanho fixo','Um método reversível de compactação','Uma chave privada compartilhada','Um protocolo de roteamento'],0,'Hashes produzem resumos de tamanho fixo e não são projetados para reversão.'],
-      ['Qual princípio concede apenas os acessos necessários para uma tarefa?', ['Privilégio mínimo','Confiança implícita','Disponibilidade total','Acesso anônimo'],0,'Privilégio mínimo reduz o dano possível por erro ou comprometimento.'],
-      ['Para que serve um backup offline ou imutável contra ransomware?', ['Dificultar que o malware apague também as cópias de recuperação','Aumentar a velocidade da CPU','Impedir todo phishing','Substituir a autenticação'],0,'Cópias isoladas ou imutáveis podem sobreviver à criptografia maliciosa.'],
-      ['Em criptografia assimétrica, qual chave deve ser mantida em segredo pelo proprietário?', ['Chave privada','Chave pública','Certificado público','Identificador do algoritmo'],0,'A chave privada não deve ser compartilhada.'],
-      ['O que significa vulnerabilidade de software?', ['Fraqueza que pode ser explorada para afetar segurança','Uma cópia de segurança','Um controle de acesso válido','Um tipo de licença'],0,'Vulnerabilidades são falhas que podem permitir ações não autorizadas.']]],
-    ['Sistemas operacionais', [
-      ['Qual é uma função central do sistema operacional?', ['Gerenciar recursos de hardware e oferecer serviços a programas','Criar páginas HTML automaticamente','Substituir a CPU','Fabricar componentes físicos'],0,'O SO coordena processador, memória, dispositivos e processos.'],
-      ['O que é um processo?', ['Uma instância de programa em execução','Um arquivo compactado','Uma partição de disco','Uma instrução HTML'],0,'Processos possuem estado de execução e recursos associados.'],
-      ['Qual componente do sistema operacional decide qual processo usa a CPU?', ['Escalonador','Compilador','Servidor DNS','Carregador de imagens'],0,'O escalonador seleciona processos ou threads para execução.'],
-      ['O que é memória virtual?', ['Abstração que combina memória física com armazenamento para ampliar o espaço de endereçamento','Memória exclusiva da placa de vídeo','Um tipo de cache do navegador','Uma memória que nunca usa disco'],0,'Memória virtual oferece espaços de endereçamento e pode usar paginação em disco.'],
-      ['Qual sistema de arquivos é padrão comum em instalações modernas do Windows?', ['NTFS','ext4','APFS','HFS+'],0,'NTFS é o sistema de arquivos nativo comum do Windows.'],
-      ['Qual permissão Unix permite executar um arquivo como programa?', ['x','r','w','d'],0,'O bit x indica permissão de execução.'],
-      ['O que é uma chamada de sistema?', ['Pedido de um programa ao kernel por um serviço','Uma interrupção de teclado apenas','Uma função CSS','Uma conexão TCP'],0,'Chamadas de sistema permitem solicitar operações privilegiadas ao kernel.'],
-      ['Qual comando Unix lista arquivos de um diretório?', ['ls','cd','pwd','mkdir'],0,'ls exibe o conteúdo do diretório.']]]
+  'use strict';
+  // correctAnswer is a zero-based index into options. Keep IDs stable when adding questions.
+  const rows = [
+    ['osi','Modelo OSI','facil','Quantas camadas possui o modelo OSI?',['4.','5.','7.','8.'],2,'O modelo OSI organiza a comunicação em sete camadas, da Física à Aplicação.'],
+    ['ipv4','IPv4','facil','Quantos bits possui um endereço IPv4?',['16 bits.','32 bits.','64 bits.','128 bits.'],1,'Um endereço IPv4 possui 32 bits, normalmente representados por quatro octetos decimais.'],
+    ['dns','DNS','media','Qual é a principal função do DNS?',['Criptografar arquivos.','Traduzir nomes de domínio em endereços IP.','Distribuir endereços MAC.','Controlar a velocidade da internet.'],1,'O DNS consulta registros como A e AAAA para resolver nomes em endereços IPv4 e IPv6.'],
+    ['dhcp','DHCP','media','Qual é a função principal do protocolo DHCP?',['Atribuir automaticamente configurações de rede aos dispositivos.','Bloquear conexões externas.','Converter endereços IPv4 em IPv6.','Detectar vírus na rede.'],0,'O DHCP fornece configurações como endereço IP, máscara, gateway e servidores DNS.'],
+    ['tcp','TCP e UDP','media','Qual característica diferencia o TCP do UDP?',['TCP não utiliza portas.','TCP oferece entrega confiável e controle de transmissão.','TCP funciona exclusivamente em redes sem fio.','TCP não permite comunicação entre computadores.'],1,'O TCP usa confirmações, retransmissões e controle de fluxo para entregar um fluxo de bytes ordenado e confiável.'],
+    ['switch','Switches','facil','Qual é a principal função de um switch de camada 2 em uma rede local?',['Encaminhar quadros com base nos endereços MAC.','Distribuir endereços IP automaticamente.','Converter nomes de domínio em IP.','Criptografar toda a comunicação da internet.'],0,'O switch aprende os endereços MAC de origem e consulta sua tabela para encaminhar quadros às portas adequadas.'],
+    ['router','Roteadores','facil','Qual é a principal função de um roteador?',['Armazenar arquivos compartilhados.','Encaminhar pacotes entre redes diferentes.','Substituir o servidor DNS.','Identificar exclusivamente endereços MAC.'],1,'O roteador consulta rotas e usa o endereço IP de destino para encaminhar pacotes entre redes.'],
+    ['https','HTTP e HTTPS','media','Qual é a principal diferença entre HTTP e HTTPS?',['HTTPS utiliza TLS para proteger a comunicação.','HTTP funciona apenas em redes locais.','HTTPS não utiliza portas.','HTTP é exclusivo para dispositivos móveis.'],0,'O HTTPS protege a comunicação HTTP com TLS, oferecendo criptografia, integridade e autenticação do servidor.'],
+    ['mac','Endereços MAC','facil','O que representa um endereço MAC?',['Um endereço lógico utilizado para identificar uma rede IP.','Um endereço de enlace associado a uma interface de rede.','Uma senha de acesso ao roteador.','Um endereço de servidor DNS.'],1,'O endereço MAC identifica uma interface na camada de enlace; ele pode ser configurado ou aleatorizado.'],
+    ['ipv6','IPv6','facil','Quantos bits possui um endereço IPv6?',['32 bits.','48 bits.','64 bits.','128 bits.'],3,'Endereços IPv6 possuem 128 bits e são normalmente escritos em grupos hexadecimais.'],
+    ['arp','ARP','media','Qual é a função do protocolo ARP em redes IPv4?',['Resolver endereços IPv4 em endereços MAC na rede local.','Distribuir endereços IPv6.','Criptografar pacotes TCP.','Verificar a velocidade da conexão.'],0,'O ARP descobre o endereço MAC correspondente a um IPv4 no enlace local, incluindo o do gateway.'],
+    ['nat','NAT','media','Qual é a principal função do NAT?',['Traduzir endereços IP, permitindo, por exemplo, que vários dispositivos compartilhem um endereço IPv4 público.','Converter endereços MAC em nomes de domínio.','Aumentar fisicamente a velocidade do cabo.','Substituir o protocolo DHCP.'],0,'O NAT traduz endereços IP. Com tradução de portas (NAPT/PAT), vários dispositivos podem compartilhar um IPv4 público.'],
+    ['mask24','Máscaras de sub-rede','media','Qual máscara corresponde ao prefixo /24 em IPv4?',['255.255.0.0.','255.255.255.0.','255.0.0.0.','255.255.255.255.'],1,'O prefixo /24 tem 24 bits de rede iguais a 1: 255.255.255.0.'],
+    ['ping','Diagnóstico de rede','facil','Qual comando testa a conectividade com outro dispositivo utilizando mensagens ICMP Echo?',['mkdir.','ping.','format.','copy.'],1,'O ping envia ICMP Echo Request e aguarda Echo Reply. Filtros de ICMP podem impedir respostas mesmo com o destino ativo.'],
+    ['udp','TCP e UDP','media','Qual das características abaixo pertence ao protocolo UDP?',['Estabelece obrigatoriamente uma conexão antes de transmitir.','Garante a entrega de todos os pacotes.','Não possui garantia de entrega ou ordenação dos dados.','Funciona somente em redes cabeadas.'],2,'O UDP envia datagramas sem estabelecer conexão e não fornece retransmissão ou ordenação.'],
+    ['ap','Pontos de acesso','facil','Qual é a função típica de um Access Point em modo bridge?',['Conectar dispositivos Wi-Fi à rede local cabeada.','Resolver nomes DNS obrigatoriamente.','Converter qualquer cabo em fibra óptica.','Substituir o endereçamento IP por senhas.'],0,'Um ponto de acesso em bridge conecta clientes sem fio ao mesmo domínio de enlace da rede cabeada.'],
+    ['star','Topologias de rede','facil','Em qual topologia cada dispositivo possui uma conexão com um equipamento central?',['Anel.','Barramento.','Estrela.','Malha completa.'],2,'Na topologia estrela, os dispositivos se conectam a um ponto central, como um switch.'],
+    ['ethernet','Redes cabeadas e sem fio','facil','Qual combinação associa corretamente tecnologias a seus meios de acesso?',['Ethernet por par trançado: cabo; Wi-Fi: ondas de rádio.','Ethernet por par trançado: rádio; Wi-Fi: cabo coaxial.','Ambas exigem fibra óptica.','Ambas exigem cabo de par trançado até cada cliente.'],0,'Ethernet por par trançado usa cabos de cobre; Wi-Fi transmite por rádio.'],
+    ['tcpip','Modelo TCP/IP','media','No modelo TCP/IP de quatro camadas, em qual camada atua o protocolo IP?',['Aplicação.','Transporte.','Internet.','Acesso à rede.'],2,'A camada Internet contém o IP e trata do endereçamento e encaminhamento de pacotes.'],
+    ['osi-routing','Modelo OSI','facil','Qual camada OSI é responsável pelo roteamento entre redes diferentes?',['Aplicação.','Transporte.','Rede.','Física.'],2,'A camada de Rede (camada 3) realiza endereçamento lógico e encaminhamento de pacotes.'],
+    ['subnet26','Cálculo de sub-redes','dificil','Em uma sub-rede IPv4 /26 convencional, quantos endereços podem ser atribuídos a hosts, excluindo rede e broadcast?',['62.','64.','126.','30.'],0,'Restam 6 bits de host: 2⁶ = 64 endereços. Excluindo rede e broadcast, restam 62 hosts.'],
+    ['subnet27','Cálculo de sub-redes','dificil','Qual é o endereço de rede do host 192.168.10.77/27?',['192.168.10.0.','192.168.10.64.','192.168.10.77.','192.168.10.96.'],1,'Um /27 cria blocos de 32 endereços. O endereço 77 pertence ao bloco de 64 a 95.'],
+    ['broadcast','Cálculo de sub-redes','dificil','Qual é o broadcast da sub-rede 192.168.1.128/26?',['192.168.1.129.','192.168.1.190.','192.168.1.191.','192.168.1.255.'],2,'O bloco /26 começa em 128 e termina em 191; o último endereço é o broadcast.'],
+    ['dns-failure','Diagnóstico de rede','dificil','Um cliente acessa um serviço pelo IP, mas a consulta de seu nome com nslookup falha. Qual serviço deve ser investigado primeiro?',['DHCP, por sempre impedir acesso por IP.','DNS e sua configuração no cliente.','ARP, por traduzir nomes de domínio.','NAT, por substituir todas as consultas DNS.'],1,'Acesso por IP com falha de resolução do nome sugere investigar o DNS configurado e os registros do domínio.'],
+    ['gateway','Configuração de redes','dificil','Um host 192.168.1.10/24 precisa de um gateway diretamente alcançável nessa sub-rede. Qual endereço é adequado?',['192.168.2.1.','192.168.1.0.','192.168.1.255.','192.168.1.1.'],3,'192.168.1.1 é um endereço de host na mesma /24. O endereço .0 é a rede e .255 é o broadcast.'],
+    ['firewall','Segurança de redes','dificil','Qual regra de firewall segue o princípio do menor privilégio para um servidor web HTTPS público?',['Permitir todas as portas de entrada.','Desativar a filtragem de entrada.','Permitir a porta do serviço HTTPS necessário e negar entradas não autorizadas.','Liberar administração remota para qualquer origem.'],2,'O menor privilégio permite apenas o tráfego necessário, reduzindo a superfície exposta do servidor.'],
+    ['wifi-security','Segurança de redes sem fio','dificil','Qual mecanismo do WPA3-Personal substitui o método de autenticação PSK do WPA2-Personal?',['WEP.','SAE.','ARP.','HTTP.'],1,'O SAE (Simultaneous Authentication of Equals) autentica usando senha e dificulta ataques de dicionário offline contra a troca capturada.'],
+    ['route','Roteamento','dificil','Uma tabela possui rotas 10.0.0.0/8 e 10.1.0.0/16. Qual é escolhida para 10.1.2.3 pelo critério de maior prefixo?',['10.0.0.0/8.','As duas rotas sempre são usadas igualmente.','10.1.0.0/16.','Nenhuma, pois o destino é privado.'],2,'O encaminhamento escolhe a rota compatível mais específica: /16 tem um prefixo maior que /8.'],
+    ['tracert','Diagnóstico de rede','dificil','Qual comando do Windows identifica saltos até um destino variando o TTL das sondas?',['ipconfig.','nslookup.','arp.','tracert.'],3,'O tracert aumenta o TTL e usa respostas ICMP para identificar saltos; alguns roteadores podem não responder.'],
+    ['ospf','Protocolos de roteamento','dificil','Qual protocolo de roteamento interno utiliza estado de enlace e o algoritmo SPF?',['DHCP.','OSPF.','DNS.','ARP.'],1,'O OSPF distribui informações de estado de enlace e calcula caminhos com o algoritmo SPF de Dijkstra.']
   ];
-  const difficulties = ['facil','media','dificil'];
-  window.SANITY_QUESTIONS = categories.flatMap(([category, items]) => items.map(([question, options, correct, explanation], index) => ({
-    question, options, correct, category, difficulty: difficulties[index % 3], explanation
-  })));
+  window.SANITY_QUESTIONS = rows.map(([id, category, difficulty, question, options, correctAnswer, explanation]) =>
+    Object.freeze({ id, category, difficulty, question, options: Object.freeze(options), correctAnswer, explanation }));
+
+  function isValid(q) {
+    return q && typeof q.id === 'string' && q.id.trim() &&
+      ['facil', 'media', 'dificil'].includes(q.difficulty) &&
+      ['category', 'question', 'explanation'].every(key => typeof q[key] === 'string' && q[key].trim()) &&
+      Array.isArray(q.options) && q.options.length === 4 &&
+      q.options.every(option => typeof option === 'string' && option.trim()) &&
+      new Set(q.options.map(option => option.trim().toLowerCase())).size === 4 &&
+      Number.isInteger(q.correctAnswer) && q.correctAnswer >= 0 && q.correctAnswer < 4;
+  }
+  const levelFor = streak => streak >= 4 ? 'dificil' : streak >= 2 ? 'media' : 'facil';
+  function select(bank, streak, seen, lastId, random = Math.random) {
+    const ids = new Set();
+    const pool = bank.filter(q => {
+      if (!isValid(q) || ids.has(q.id)) return false;
+      ids.add(q.id);
+      return q.difficulty === levelFor(streak);
+    });
+    if (!pool.length) return null;
+    let candidates = pool.filter(q => !seen.includes(q.id));
+    // Restart only the exhausted difficulty: preserve progress in the other tiers.
+    if (!candidates.length) {
+      const tierIds = new Set(pool.map(q => q.id));
+      const retained = seen.filter(id => !tierIds.has(id));
+      seen.splice(0, seen.length, ...retained);
+      candidates = pool;
+    }
+    if (candidates.length > 1) candidates = candidates.filter(q => q.id !== lastId);
+    const selected = candidates[Math.floor(random() * candidates.length)];
+    seen.push(selected.id);
+    return selected;
+  }
+  window.SanityQuizBank = { isValid, levelFor, select };
 })();
