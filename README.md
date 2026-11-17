@@ -1,0 +1,17 @@
+Em SANITY.exe você é um soldado de uma unidade chamada de ANT-VIRUS louco pra usar o equipamento balístico nesse mundo futurista distópico inspirado em obras como Cyberpunk, seu nome? irrelevante, 
+sua vontade de sair por aí explodindo quem fica no seu caminho? Irresistível, seu objetivo? realizar uma limpeza em uma empresa que teve todos seus funcionários e máquinas infectadas por uma IA, 
+os meios que foram escolhidos para a limpeza dessa vez é completa e total exterminação de todos os grupos envolvidos com o caso, 
+limpe a empresa e descubra quem começou isso e tente se manter SÃO, a cada nível que você sobe a presença do Vírus fica cada vez mais notável, 
+sempre te fazendo perguntas e falando ativamente com você ao decorrer do jogo.
+
+Desenvolvimento 
+Essa era pra ser a história do jogo caso se não tivesse passado tantas dificuldades durante o desenvolvimento, 
+no começo eu queria criar um jogo estilo jogo de turnos e estratégico mas rapidamente descartei a ideia porque eu não achei cativante o suficiente, 
+depois comecei com uma versão mais aproximada a Boomer Shooters como Doom ou Mullet MadJack, 
+
+fiquei com essa ideia por um tempo até começar a dar muito ruim, 
+basicamente o jogo tava repleto de bugs onde travava muito o jogo o que o deixava bem frustrante e também tinha um problema visual que fazia que o cenário e as paredes fosse da mesma cor,
+mesma textura e pra diferenciar o teto do chão ou da parede era bem ruim não era um bom produto, ai eu decidi trocar para um jogo estilo Hotline Miami ou Postal, com uma premissa bem simples, 
+você seria um soldado assinado a concluir a missão de limpar uma empresa infectada e de pouco a pouco você mesmo seria infectado e perderia sua humanidade ao decorrer do jogo, coisa que infelizmente não ocorreu pois a falta de Tokens desacelerou o projeto e minhas ideias, eu tive a ideia de fazer dois chefões e eles apareceriam cada 10 níveis, 
+o primeiro seria um soldado da sua mesma unidade que foi mandado antes e acabou falhando sendo infectado pelo vírus por ter recusado responder as perguntas, 
+a IA simplesmente o achou incapaz e não divertido então decidiu acabar com ele, a sua mecânica seria que quando ativasse o Sandevistan ele ficaria muito rápido e o jogador não conseguiria o acompanhar somente ativando o Sandevistan o jogador poderia se igualar a velocidade do Boss, o segundo Boss seria a Dama de ferro, uma máquina de combate em desenvolvimento com uma mecânica parecida com as danças da cadeira, quando o jogador chegasse na metade de sua vida as luzes começariam a se apagar e o jogador deveria ficar parado e esperar as luzes acenderem novamente para continuar o tiroteio, caso o jogador se mexesse com as luzes apagadas a Dama de ferro iria ativar seu sistema de aniquilação e executar o jogador sem nenhuma chance de contra atacar, isso deixaria o jogo mais complexo mas com toda certeza mais divertido e da maneira que eu visionei, o jogo consiste em limpar os andares matando os inimigos utilizando de habilidades como o Sandevistan que para o tempo por alguns segundos ou o Dash que server pra locomoção e desviar dos ataques, seguir para o elevador, responder a pergunta do Vírus e ganhar um buff se correta, adicionei a mecânica que os inimigos ganham adversidades quando o jogador ganha um buff, como por exemplo eles terem um tempo de reação maior ou ficarem mais rápidos são bons exemplos, o jogo em si se tornou um jogo Arcade Shooter onde o objetivo é conseguir o maior placar.
